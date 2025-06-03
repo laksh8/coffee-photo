@@ -1,6 +1,7 @@
 package com.laksh.coffee_photo;
 
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -42,7 +43,7 @@ public class PhotosController {
     }
 
     @PostMapping("/photos")
-    public Photo create(@RequestBody Photo photo){ // jackson creates the java object with the empty constructor, sets file name with the setFileName setters
+    public Photo create(@RequestBody @Valid Photo photo){ // jackson creates the java object with the empty constructor, sets file name with the setFileName setters
         photo.setId(UUID.randomUUID().toString()); // id should be generated in the backend
         db.put(photo.getId(), photo);
         return photo;
