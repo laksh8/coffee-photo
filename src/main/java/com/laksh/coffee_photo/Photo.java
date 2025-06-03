@@ -1,5 +1,6 @@
 package com.laksh.coffee_photo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;
 
 public class Photo {
@@ -9,8 +10,8 @@ public class Photo {
     @NotEmpty
     private String fileName;
 
-    // raw data
-
+    @JsonIgnore
+    private byte[] data;
 
     public Photo() {
     }
@@ -34,5 +35,13 @@ public class Photo {
 
     public void setFileName(String fileName) {
         this.fileName = fileName;
+    }
+
+    public byte[] getData() {
+        return data;
+    }
+
+    public void setData(byte[] data) {
+        this.data = data;
     }
 }
