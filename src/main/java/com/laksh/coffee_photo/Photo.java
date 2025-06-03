@@ -1,9 +1,12 @@
 package com.laksh.coffee_photo;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Photo {
 
     private String id;
 
+    @NotEmpty
     private String fileName;
 
     // raw data
