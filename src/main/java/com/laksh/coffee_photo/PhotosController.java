@@ -1,11 +1,14 @@
 package com.laksh.coffee_photo;
 
 
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,8 +46,14 @@ public class PhotosController {
     }
 
     @PostMapping("/photos")
-    public Photo create(@RequestBody @Valid Photo photo){ // jackson creates the java object with the empty constructor, sets file name with the setFileName setters
+    public Photo create(@RequestPart("data") MultipartFile file) throws IOException {
+
+        Photo photo = new Photo();
+
         photo.setId(UUID.randomUUID().toString()); // id should be generated in the backend
+        photo.setFileName(file.getOriginalFilename());
+        photo.setData(file.getBytes());
+
         db.put(photo.getId(), photo);
         return photo;
     }
