@@ -1,4 +1,4 @@
-package com.laksh.coffee_photo;
+package com.laksh.coffee_photo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotEmpty;

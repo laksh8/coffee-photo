@@ -1,5 +1,6 @@
-package com.laksh.coffee_photo;
+package com.laksh.coffee_photo.service;
 
+import com.laksh.coffee_photo.model.Photo;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
